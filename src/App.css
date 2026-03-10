@@ -1,0 +1,198 @@
+/* ================= PAGINA ================= */
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* container principal */
+.app {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= DARK MODE ================= */
+
+.app.dark {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+.app.dark input,
+.app.dark select {
+  background: #1f2937;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+}
+
+.app.dark .todo {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+/* ================= LIGHT MODE ================= */
+
+.app.light {
+  background: #e6edf6;
+  color: #0f172a;
+}
+
+.app.light input,
+.app.light select {
+  background: #dce6f2;
+  color: #0f172a;
+  border: 1px solid #b8c4d6;
+}
+
+.app.light .todo {
+  background: #dce6f2;
+  border: 1px solid #757575;
+}
+
+/* ================= TITULOS ================= */
+
+h1 {
+  text-align: center; 
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: normal;
+  display: inline-block;
+}
+
+/* ================= FORM ================= */
+
+form {
+  display: flex;
+  gap: 10px;
+  padding: 0 150px;
+  margin-bottom: 25px;
+}
+
+.form h2 {
+  margin-left: 150px;
+}
+
+form input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+form select {
+  padding: 8px;
+  border-radius: 4px;
+}
+
+form button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #1d4ed8;
+}
+
+/* ================= CONTROLS (SEARCH + FILTER) ================= */
+
+.controls {
+  display: flex;
+  gap: 40px;
+  padding: 0 150px;
+  margin-bottom: 25px;
+}
+
+.search,
+.filter {
+  flex: 1;
+}
+
+.search input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.filter select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* ================= LISTA ================= */
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 150px;
+}
+
+/* ================= TAREFA ================= */
+
+.todo {
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.todo p {
+  margin: 4px 0;
+  word-break: break-word;
+}
+
+/* ================= BOTOES ================= */
+
+button {
+  margin-top: 8px;
+  margin-right: 8px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.complete {
+  background: #10b981;
+  color: white;
+}
+
+.complete:hover {
+  background: #059669;
+}
+
+.delete {
+  background: #ef4444;
+  color: white;
+}
+
+.delete:hover {
+  background: #dc2626;
+}
+
+/* ================= BOTAO DARK MODE ================= */
+
+.lightmode {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  border: 3px solid #6a99ff;
+  transition: 0.3s;
+}
+
+.lightmode:hover {
+  background: #1d4ed8;
+}
