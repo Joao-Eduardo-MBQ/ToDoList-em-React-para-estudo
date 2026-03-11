@@ -48,7 +48,7 @@ body {
 
 .app.light .todo {
   background: #dce6f2;
-  border: 1px solid #757575;
+  border: 1px solid #b8c4d6;
 }
 
 /* ================= TITULOS ================= */
@@ -78,7 +78,7 @@ form {
   margin-left: 150px;
 }
 
-form input {
+.form .nome {
   flex: 1;
   padding: 8px;
   border-radius: 4px;
@@ -101,6 +101,11 @@ form button {
 form button:hover {
   background: #1d4ed8;
 }
+
+.form .prazo-input {
+  width: 150px;
+  padding: 11px 8px;
+} 
 
 /* ================= CONTROLS (SEARCH + FILTER) ================= */
 
@@ -189,7 +194,6 @@ button {
   background: #2563eb;
   color: white;
   cursor: pointer;
-  border: 3px solid #6a99ff;
   transition: 0.3s;
 }
 

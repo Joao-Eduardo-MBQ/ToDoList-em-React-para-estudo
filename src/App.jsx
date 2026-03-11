@@ -13,13 +13,14 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState('');
 
-  const addtodo = (text, category) => {
+  const addtodo = (text, category, prazo) => {
     const newtodo = [
       ...todos,
       {
         id: todos.length + 1,
         text,
         category,
+        prazo,
         completed: false
       }
     ]
@@ -59,7 +60,7 @@ function App() {
       </div>
 
       <div className='todo-list'>
-        {todos.filter((todo) => todo.text.toLowerCase().includes(search) && (filter === '' || todo.category === filter)).map((todo) => (
+        {todos.filter((todo) => todo.text.toLowerCase().includes(search) && (filter === '' || todo.category === filter && todo.prazo === prazo)).map((todo) => (
           <Todo key={todo.id} todo={todo} deletetodo={deletetodo} completetodo={completetodo}/>
         ))}
       </div>

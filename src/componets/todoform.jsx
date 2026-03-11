@@ -4,15 +4,16 @@ const Todoform = ({ addtodo }) => {
 
   const [value, setValue] = React.useState('');
   const [category, setCategory] = React.useState('Learning');
+  const [prazo, setPrazo] = React.useState('');
   
   const handleSubmit = (e) => {
 
     e.preventDefault();
-    if(!value || !category) return;
-    console.log('Tarefa:', value, 'Categoria:', category);
-    addtodo(value, category);
+    if(!value || !category || !prazo) return;
+    console.log('Tarefa:', value, 'Categoria:', category, 'Prazo:', prazo);
+    addtodo(value, category, prazo);
     setValue('');
-
+    setPrazo('');
   }
     
  return  (
@@ -23,7 +24,8 @@ const Todoform = ({ addtodo }) => {
           <input 
           type="text" 
           placeholder='Nova tarefa'
-          value={value} 
+          value={value}
+          className='nome' 
           onChange={(e) => setValue(e.target.value)} 
           />
 
@@ -36,6 +38,13 @@ const Todoform = ({ addtodo }) => {
             <option value="Personal">Personal</option>
 
           </select>
+
+          <input 
+          value = {prazo}
+          onChange = {(e) => setPrazo(e.target.value)} 
+          type="date" 
+          className='prazo-input' 
+          />
 
           <button type='submit'>Adicionar</button>
         </form>
