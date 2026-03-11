@@ -1,16 +1,37 @@
 import React from 'react'
 
-const todo = ({todo, deletetodo, completetodo}) => {
+const Todo = ({todo, deletetodo, completetodo}) => {
+  const hoje = new Date();
+  const prazo = new Date(todo.prazo);
+  const diferenca = prazo - hoje;
+  const diasRestantes = Math.ceil(diferenca / (1000 * 60 * 60 * 24));
+
+    let mensagem = "";
+    let colortext = "";
+
+  if (diasRestantes < 0) {
+    mensagem = "A tarefa está atrasada!"; colortext= "#ef4444";
+    todo.prazoF = "Atrasado";
+  } else if (diasRestantes <= 3) {
+    mensagem = "A tarefa vence em poucos dias!"; colortext= "#ff8e3d";
+    todo.prazoF = "Perto de vencer";
+  } else {
+    mensagem = `A tarefa vence em ${diasRestantes} dias!`; colortext= "#10b981";
+    todo.prazoF = "Longe de vencer";
+  }
+
   return (
     <div>
         <div 
-        className = "todo"
+        className="todo"
         style={{textDecoration: todo.completed ? 'line-through' : '', textDecorationThickness: "3px"}}>
         
-          <div classNmae = "content">
+          <div className="content">
             <p>{todo.text}</p>
             <p className='category'>({todo.category})</p>
-            <p className='prazo'>{todo.prazo}</p>
+            <p className='prazo' style={{ color: colortext }}>
+              Prazo: {todo.prazo} | {mensagem}
+            </p>
           </div>
           <button className='delete' onClick={()=>deletetodo(todo.id)}>Delete</button>
           <button className='complete' onClick={()=>completetodo(todo.id)}>
@@ -21,4 +42,4 @@ const todo = ({todo, deletetodo, completetodo}) => {
   )
 }
 
-export default todo
+export default Todo

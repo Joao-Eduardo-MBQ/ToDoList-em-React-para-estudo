@@ -5,6 +5,7 @@ import Todoform from './componets/todoform.jsx'
 import LightMode from './componets/litghmode.jsx'
 import Search from './componets/search.jsx'
 import Filter from './componets/filter.jsx'
+import FilterP from './componets/FilterP.jsx'
 
 function App() {
 
@@ -12,8 +13,9 @@ function App() {
   const [search, setSearch] = useState('');
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState('');
-
-  const addtodo = (text, category, prazo) => {
+  const [filterp, setFilterp] = useState('');
+  
+  const addtodo = (text, category, prazo, prazoF) => {
     const newtodo = [
       ...todos,
       {
@@ -21,6 +23,7 @@ function App() {
         text,
         category,
         prazo,
+        prazoF,
         completed: false
       }
     ]
@@ -31,14 +34,14 @@ function App() {
   const deletetodo = (id) => {
     const newtodo = [...todos].filter((todo) => 
       todo.id !== id
-  );
+    );
     setTodos(newtodo);
   }
 
   const completetodo = (id) => {
     const newtodo = [...todos].map((todo) => 
       todo.id === id ? {...todo, completed: !todo.completed} : todo
-  );
+    );
     setTodos(newtodo);
   }
 
@@ -50,19 +53,37 @@ function App() {
         setDarkMode={setDarkMode}
       />
 
-      <h1>Lista de Tarefas</h1>
+      <div className="container">
 
-      <Todoform addtodo={addtodo}/>
-      
-      <div className="controls">
-        <Search search={search} setSearch={setSearch} />
-        <Filter filter={filter} setFilter={setFilter} />
-      </div>
+        <h1>Lista de Tarefas</h1>
 
-      <div className='todo-list'>
-        {todos.filter((todo) => todo.text.toLowerCase().includes(search) && (filter === '' || todo.category === filter && todo.prazo === prazo)).map((todo) => (
-          <Todo key={todo.id} todo={todo} deletetodo={deletetodo} completetodo={completetodo}/>
-        ))}
+        <Todoform addtodo={addtodo}/>
+        
+        <div className="controls">
+          <Search search={search} setSearch={setSearch} />
+          <Filter filter={filter} setFilter={setFilter} />
+          <FilterP filterp={filterp} setFilterp={setFilterp} />
+        </div>
+
+        <hr className="linha" />
+
+        <div className='todo-list'>
+          {todos
+            .filter((todo) =>
+              todo.text.toLowerCase().includes(search) &&
+              (filter === '' || todo.category === filter) &&
+              (filterp === '' || todo.prazoF === filterp)
+            )
+            .map((todo) => (
+              <Todo
+                key={todo.id}
+                todo={todo}
+                deletetodo={deletetodo}
+                completetodo={completetodo}
+              />
+          ))}
+        </div>
+
       </div>
 
     </div>
